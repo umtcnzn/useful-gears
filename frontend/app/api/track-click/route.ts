@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-export const runtime = 'edge'
-
 export async function POST(req: NextRequest) {
   try {
     const { slug, product_name, affiliate_url } = await req.json()
