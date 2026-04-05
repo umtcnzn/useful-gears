@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "opennextjs-cloudflare build && wrangler pages deploy",
-    "preview": "opennextjs-cloudflare build && wrangler pages dev"
+    "deploy": "netlify deploy --build",
+    "preview": "netlify dev"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.101.1",
