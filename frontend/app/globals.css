@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink:           #07090f;
+  --color-surface:       #0d1421;
+  --color-surface-2:     #121930;
+  --color-gold:          #c9a55a;
+  --color-gold-bright:   #f0c060;
+  --color-gold-dim:      rgba(201, 165, 90, 0.14);
+  --color-parchment:     #ede8dc;
+  --color-parchment-dim: #9a9488;
+  --color-border:        rgba(201, 165, 90, 0.18);
+  --color-border-bright: rgba(201, 165, 90, 0.45);
+
+  --font-display: var(--font-cormorant);
+  --font-body:    var(--font-dm-sans);
+
+  --radius-card: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #07090f;
+  color: #ede8dc;
+  font-family: var(--font-dm-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #07090f;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #07090f; }
+::-webkit-scrollbar-thumb { background: rgba(201,165,90,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(201,165,90,0.55); }
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease forwards;
+}
+.animate-fade-up-delay-1 { animation: fade-up 0.7s 0.1s ease both; }
+.animate-fade-up-delay-2 { animation: fade-up 0.7s 0.2s ease both; }
+.animate-fade-up-delay-3 { animation: fade-up 0.7s 0.35s ease both; }
+.animate-fade-up-delay-4 { animation: fade-up 0.7s 0.5s ease both; }
+
+/* Ambient orb */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(13, 20, 33, 0.75);
+  border: 1px solid rgba(201, 165, 90, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(201, 165, 90, 0.42);
+  box-shadow: 0 0 32px rgba(201, 165, 90, 0.1), 0 8px 40px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+
+/* Gold top-border accent */
+.card-gold-line::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a55a, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.glass-card:hover .card-gold-line::before,
+.glass-card:hover.card-gold-line::before {
+  opacity: 1;
+}
+
+/* Gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #e8c878 0%, #c9a55a 50%, #a07830 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Amazon CTA button */
+.btn-amazon {
+  background: linear-gradient(135deg, #f0c060 0%, #c9a55a 100%);
+  color: #07090f;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(201,165,90,0.3);
+}
+.btn-amazon:hover {
+  background: linear-gradient(135deg, #f8d070 0%, #e0b860 100%);
+  box-shadow: 0 6px 28px rgba(201,165,90,0.5);
+  transform: translateY(-1px);
+}
+
+/* Search input */
+.search-input {
+  background: rgba(13, 20, 33, 0.8);
+  border: 1px solid rgba(201,165,90,0.2);
+  color: #ede8dc;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  outline: none;
+  border-color: rgba(201,165,90,0.5);
+  box-shadow: 0 0 0 3px rgba(201,165,90,0.08);
+}
+.search-input::placeholder { color: #5a6070; }
+
+/* Navbar Amazon button */
+.nav-amazon-btn {
+  background: rgba(201,165,90,0.12);
+  border: 1px solid rgba(201,165,90,0.28);
+  color: #c9a55a;
+}
+.nav-amazon-btn:hover {
+  background: rgba(201,165,90,0.22);
+}
+
+/* TikTok embed wrapper */
+.tiktok-wrapper blockquote { margin: 0 auto !important; }
