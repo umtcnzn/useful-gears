@@ -37,3 +37,14 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   if (error) return null
   return data
 }
+
+export async function getPlayProducts(): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .not('price', 'is', null)
+    .order('view_count', { ascending: false })
+
+  if (error) throw error
+  return data ?? []
+}

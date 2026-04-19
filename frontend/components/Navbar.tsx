@@ -38,6 +38,13 @@ export function Navbar() {
           >
             All Products
           </Link>
+          <Link
+            href="/play"
+            className="text-sm font-semibold transition-colors duration-200 tracking-wide"
+            style={{ color: '#c9a55a' }}
+          >
+            🎮 Play
+          </Link>
           <a
             href="https://www.amazon.com/s?k=Useful+Gears&tag=usefulgears-20"
             target="_blank"

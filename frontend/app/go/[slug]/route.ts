@@ -12,14 +12,15 @@ export async function GET(
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
 
-  // Fetch product to get affiliate URL
+  // Fetch product — prefer amazon_product_url, fallback to affiliate_url
   const { data: product } = await client
     .from('products')
-    .select('product_name, affiliate_url')
+    .select('product_name, affiliate_url, amazon_product_url')
     .eq('slug', slug)
     .single()
 
-  if (!product?.affiliate_url) {
+  const destination = product?.amazon_product_url || product?.affiliate_url
+  if (!destination) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
@@ -32,11 +33,11 @@ export async function GET(
   await client.from('clicks').insert({
     slug,
     product_name: product.product_name,
-    affiliate_url: product.affiliate_url,
+    affiliate_url: destination,
     ip_address: ip,
     user_agent: req.headers.get('user-agent') || null,
     referer: req.headers.get('referer') || null,
   })
 
-  return NextResponse.redirect(product.affiliate_url)
+  return NextResponse.redirect(destination)
 }

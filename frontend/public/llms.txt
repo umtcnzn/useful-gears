@@ -1,0 +1,25 @@
+# Useful Gears
+
+> Useful Gears discovers viral TikTok products and links them directly to Amazon. Every product is curated from videos with tens of thousands to millions of views. Updated daily.
+
+## What This Site Does
+
+Useful Gears monitors TikTok for viral product videos, extracts the featured products using AI, and publishes them with SEO descriptions and Amazon affiliate links. Users can browse trending products, view the original TikTok video, and buy directly on Amazon.
+
+## Key Pages
+
+- [Home](https://usefulgears.net/): Featured trending products with total TikTok view stats
+- [All Products](https://usefulgears.net/products): Full catalog sorted by viral view count
+- [Price Guesser Game](https://usefulgears.net/play): Interactive game — guess the Amazon price of viral TikTok products
+- [Product Detail](https://usefulgears.net/products/[slug]): Each product has an embedded TikTok video, description, view count, and Amazon buy link
+
+## Content
+
+- Products are sourced exclusively from TikTok videos with a minimum of 10,000 views
+- Each listing includes: product name, SEO title and description, TikTok video embed, view count, and Amazon link
+- Prices and product images are enriched where available
+- Catalog is refreshed daily via automated scraper + AI pipeline
+
+## Affiliate Disclosure
+
+Useful Gears participates in the Amazon Associates program. Product links may earn a commission at no extra cost to the buyer.

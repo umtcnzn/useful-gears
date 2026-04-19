@@ -1,6 +1,5 @@
 'use client'
 
-import Script from 'next/script'
 import { extractTikTokVideoId } from '@/lib/utils'
 
 interface TikTokEmbedProps {
@@ -19,16 +18,13 @@ export function TikTokEmbed({ videoUrl }: TikTokEmbedProps) {
   }
 
   return (
-    <div className="tiktok-wrapper flex justify-center">
-      <blockquote
-        className="tiktok-embed"
-        cite={videoUrl}
-        data-video-id={videoId}
-        style={{ maxWidth: '605px', minWidth: '325px' }}
-      >
-        <section />
-      </blockquote>
-      <Script src="https://www.tiktok.com/embed.js" strategy="afterInteractive" />
+    <div className="flex justify-center w-full">
+      <iframe
+        src={`https://www.tiktok.com/embed/v2/${videoId}`}
+        style={{ maxWidth: '605px', width: '100%', height: '740px', border: 'none' }}
+        allow="encrypted-media"
+        allowFullScreen
+      />
     </div>
   )
 }
